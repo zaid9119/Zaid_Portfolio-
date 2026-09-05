@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>A Special Invitation</title>
+<title>A Special Invitation ✨</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap');
 *{box-sizing:border-box}
@@ -11,9 +11,11 @@ html,body{margin:0;min-height:100%;font-family:Montserrat,sans-serif;background:
 body{overflow-x:hidden}
 .wrap{min-height:100vh;display:grid;place-items:center;padding:28px 15px;position:relative;
 background:radial-gradient(circle at 15% 15%,#fff9eb 0 12%,transparent 35%),radial-gradient(circle at 90% 85%,#e7d4b8 0 10%,transparent 35%),#efe5d2}
-.card{width:min(92vw,520px);min-height:720px;background:#fbf7ed;border:1px solid #c8a96a;box-shadow:0 25px 70px #513b241f;position:relative;overflow:hidden;text-align:center;padding:55px 35px 40px}
+
+.card{width:min(92vw,520px);min-height:720px;background:#fbf7ed;border:1px solid #c8a96a;box-shadow:0 25px 70px #513b241f;position:relative;overflow:hidden;text-align:center;padding:55px 35px 40px;transition:.8s}
 .card:before,.card:after{content:"";position:absolute;width:125px;height:125px;border:1px solid #c8a96a;transform:rotate(45deg);opacity:.65;pointer-events:none;z-index:2}
 .card:before{top:-70px;left:-70px}.card:after{bottom:-70px;right:-70px}
+
 .orn{font-size:28px;color:#a57b37;letter-spacing:12px}
 .tiny{font-size:10px;letter-spacing:.38em;text-transform:uppercase;color:#8a6a3b;margin:26px 0 14px}
 h1,h2{font-family:'Cormorant Garamond',serif}
@@ -34,28 +36,147 @@ h1,h2{font-family:'Cormorant Garamond',serif}
 .place strong{position:relative;z-index:1;font-family:'Cormorant Garamond';font-size:25px}
 .final{font-family:'Cormorant Garamond';font-size:24px;line-height:1.2}
 .details{border-top:1px solid #d8c49d;border-bottom:1px solid #d8c49d;padding:18px;margin:25px 0;font-size:11px;line-height:2;letter-spacing:.08em}
+.again{background:transparent;color:#76582c;border:0;font-size:10px;text-decoration:underline;cursor:pointer;margin-top:15px}
 .confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:40}
 .confetti i{position:absolute;top:-20px;width:7px;height:13px;background:#b18a49;animation:fall 3s linear forwards}
-.journey-stage{position:absolute;inset:0;z-index:20;background:#1a1410;display:none;align-items:center;justify-content:center;flex-direction:column;overflow:hidden}
+
+/* ===== Travel window transition ===== */
+.journey-stage{
+  position:absolute;inset:0;z-index:20;
+  background:#1a1410;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  overflow:hidden;
+}
 .journey-stage.active{display:flex}
-.cabin{position:absolute;inset:0;opacity:0;pointer-events:none;display:flex;align-items:center;justify-content:center;flex-direction:column}
+
+.cabin{
+  position:absolute;inset:0;
+  opacity:0;
+  pointer-events:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
 .cabin.show{opacity:1;animation:cabinIn .7s ease both}
 .cabin.hide{animation:cabinOut .55s ease both}
-.mode-tag{position:absolute;top:28px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:#e8d4a8;z-index:5;text-shadow:0 2px 10px #0008}
-.mode-sub{position:absolute;bottom:32px;left:20px;right:20px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:22px;color:#f6edd8;z-index:5;text-shadow:0 4px 18px #000a}
+
+.mode-tag{
+  position:absolute;top:28px;left:0;right:0;
+  text-align:center;
+  font-size:10px;
+  letter-spacing:.42em;
+  text-transform:uppercase;
+  color:#e8d4a8;
+  z-index:5;
+  text-shadow:0 2px 10px #0008;
+}
+.mode-sub{
+  position:absolute;bottom:32px;left:20px;right:20px;
+  text-align:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;
+  color:#f6edd8;
+  z-index:5;
+  text-shadow:0 4px 18px #000a;
+}
+
+/* Airplane interior */
 .plane-cabin{background:linear-gradient(#2a3340,#1c222b 40%,#15191f)}
-.window-frame{position:relative;z-index:2;overflow:hidden}
-.plane-window{width:min(62vw,280px);height:min(72vw,330px);border-radius:50% / 46%;background:#87b7d8;box-shadow:0 0 0 14px #c9c4b8,0 0 0 18px #8a8376,0 30px 50px #0008}
-.train-window{width:min(78vw,360px);height:min(48vw,230px);border-radius:18px;background:#6aa0c4;box-shadow:0 0 0 12px #d7cbb6,0 0 0 16px #6d6456,0 0 0 22px #3a342c,0 30px 50px #0008}
-.view{position:absolute;inset:0;background-size:cover;background-position:center}
-.view.clouds{background-image:linear-gradient(#8ec5e8aa,#cfe8f6 40%,#fff0),url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80');background-size:cover;transform:scale(1.15);animation:pan 8s ease-in-out infinite alternate}
-.view.rails{background-image:linear-gradient(#0000,#0004),url('https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=80');background-size:140% auto;animation:rush 7s linear infinite}
-.shine{position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,#fff6 46%,transparent 58%);animation:gleam 2.8s ease-in-out infinite;pointer-events:none}
-.shade{position:absolute;left:8%;right:8%;top:6%;height:18%;background:linear-gradient(#2c333c,#1b2026);border-radius:40px 40px 8px 8px}
+.plane-cabin:before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,transparent 8%,#ffffff08 9%,transparent 10%),
+    linear-gradient(#2e3846 0 18%,transparent 18% 82%,#1a1f26 82%);
+  opacity:.55;
+}
+
+.window-frame{
+  position:relative;
+  z-index:2;
+  box-shadow:
+    0 0 0 14px #c9c4b8,
+    0 0 0 18px #8a8376,
+    0 30px 50px #0008,
+    inset 0 0 30px #0004;
+  overflow:hidden;
+}
+.plane-window{
+  width:min(62vw,280px);
+  height:min(72vw,330px);
+  border-radius:50% / 46%;
+  background:#87b7d8;
+}
+.train-window{
+  width:min(78vw,360px);
+  height:min(48vw,230px);
+  border-radius:18px;
+  background:#6aa0c4;
+  box-shadow:
+    0 0 0 12px #d7cbb6,
+    0 0 0 16px #6d6456,
+    0 0 0 22px #3a342c,
+    0 30px 50px #0008,
+    inset 0 0 30px #0003;
+}
+
+.view{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:center;
+  animation:pan 8s ease-in-out infinite alternate;
+}
+.view.clouds{
+  background-image:
+    linear-gradient(#8ec5e8aa,#cfe8f6 40%,#fff0),
+    url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80');
+  background-size:cover;
+  transform:scale(1.15);
+}
+.view.rails{
+  background-image:
+    linear-gradient(#0000,#0004),
+    url('https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=80');
+  background-size:140% auto;
+  animation:rush 7s linear infinite;
+}
+
+.shine{
+  position:absolute;inset:0;
+  background:linear-gradient(115deg,transparent 30%,#fff6 46%,transparent 58%);
+  animation:gleam 2.8s ease-in-out infinite;
+  pointer-events:none;
+}
+.shade{
+  position:absolute;left:8%;right:8%;top:6%;
+  height:18%;
+  background:linear-gradient(#2c333c,#1b2026);
+  border-radius:40px 40px 8px 8px;
+  box-shadow:0 6px 10px #0005;
+}
 .train-cabin{background:linear-gradient(#3a2e24,#241c16 55%,#1a1410)}
-.switch-bar{position:absolute;top:58px;left:50%;transform:translateX(-50%);display:flex;gap:8px;align-items:center;z-index:6;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#d9c7a0}
+.train-cabin:before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(90deg,#0000 0 46px,#ffffff07 46px 47px),
+    linear-gradient(#0000 22%,#2a211a 22% 24%,#0000 24%);
+}
+
+.switch-bar{
+  position:absolute;top:58px;left:50%;
+  transform:translateX(-50%);
+  display:flex;gap:8px;align-items:center;
+  z-index:6;
+  font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#d9c7a0;
+}
 .dot{width:7px;height:7px;border-radius:50%;background:#6b624f;transition:.4s}
 .dot.on{background:#e8c56a;box-shadow:0 0 10px #e8c56a}
+
 @keyframes reveal{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 @keyframes fall{to{transform:translateY(110vh) rotate(700deg);opacity:0}}
 @keyframes cabinIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
@@ -63,7 +184,17 @@ h1,h2{font-family:'Cormorant Garamond',serif}
 @keyframes pan{from{transform:scale(1.12) translateX(-2%)}to{transform:scale(1.2) translateX(3%)}}
 @keyframes rush{from{background-position:0 50%}to{background-position:100% 50%}}
 @keyframes gleam{0%,100%{transform:translateX(-30%)}50%{transform:translateX(30%)}}
-@media(max-width:450px){.card{min-height:650px;padding:45px 22px 30px}.invite h1{font-size:54px}.surprise h2{font-size:46px}.place{height:135px}.plane-window{width:220px;height:260px}.train-window{width:86vw;height:180px}}
+@keyframes cardDim{to{filter:brightness(.35)}}
+
+@media(max-width:450px){
+  .card{min-height:650px;padding:45px 22px 30px}
+  .invite h1{font-size:54px}
+  .surprise h2{font-size:46px}
+  .dest{gap:7px}
+  .place{height:135px}
+  .plane-window{width:220px;height:260px}
+  .train-window{width:86vw;height:180px}
+}
 </style>
 </head>
 <body>
@@ -79,10 +210,11 @@ h1,h2{font-family:'Cormorant Garamond',serif}
       <div class="tiny">Please open the invitation</div>
       <button class="open" onclick="openInvite()">Open Invitation</button>
     </div>
+
     <div id="surprise" class="surprise hidden">
       <div class="orn">❦ ✦ ❦</div>
       <div class="tiny">The secret is finally revealed</div>
-      <h2>We're going<br>on a trip!</h2>
+      <h2>We're going<br>on a trip! 🏔️</h2>
       <div class="subtitle">The Great North India Escape</div>
       <div class="line"></div>
       <div class="dest">
@@ -92,16 +224,18 @@ h1,h2{font-family:'Cormorant Garamond',serif}
         <div class="place" style="background-image:url('https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=700&q=85')"><strong>Delhi</strong></div>
       </div>
       <div class="details">MOUNTAINS • ROADS • FOOD • LAUGHS • MEMORIES<br>DATES & BUDGET — TO BE DECIDED TOGETHER</div>
-      <div class="final">The only question is…<br><b>Are you ready?</b></div>
+      <div class="final">The only question is…<br><b>Are you ready? ❤️</b></div>
       <button class="open" type="button">LET'S PLAN IT ✈</button>
     </div>
-    <div class="journey-stage" id="journeyStage">
+
+    <div class="journey-stage" id="journeyStage" aria-hidden="true">
       <div class="switch-bar">
         <span>Flight</span>
         <span class="dot on" id="dotFlight"></span>
         <span class="dot" id="dotTrain"></span>
         <span>Train</span>
       </div>
+
       <div class="cabin plane-cabin" id="planeCabin">
         <div class="mode-tag">Window seat 14A</div>
         <div class="window-frame plane-window">
@@ -111,6 +245,7 @@ h1,h2{font-family:'Cormorant Garamond',serif}
         </div>
         <div class="mode-sub">Above the clouds… heading north</div>
       </div>
+
       <div class="cabin train-cabin" id="trainCabin">
         <div class="mode-tag">Sleeper window · Himalayan line</div>
         <div class="window-frame train-window">
@@ -125,7 +260,7 @@ h1,h2{font-family:'Cormorant Garamond',serif}
 <div class="confetti" id="confetti"></div>
 <script>
 function burstConfetti(){
-  const box=document.getElementById('confetti');
+  const box = document.getElementById('confetti');
   for(let i=0;i<55;i++){
     const x=document.createElement('i');
     x.style.left=Math.random()*100+'%';
@@ -136,33 +271,40 @@ function burstConfetti(){
     setTimeout(()=>x.remove(),4000);
   }
 }
+
 function openInvite(){
-  const stage=document.getElementById('journeyStage');
-  const plane=document.getElementById('planeCabin');
-  const train=document.getElementById('trainCabin');
-  const invite=document.getElementById('invite');
-  const surprise=document.getElementById('surprise');
-  const dotF=document.getElementById('dotFlight');
-  const dotT=document.getElementById('dotTrain');
-  invite.style.transition='opacity .35s ease';
-  invite.style.opacity='0';
+  const stage = document.getElementById('journeyStage');
+  const plane = document.getElementById('planeCabin');
+  const train = document.getElementById('trainCabin');
+  const invite = document.getElementById('invite');
+  const surprise = document.getElementById('surprise');
+  const dotF = document.getElementById('dotFlight');
+  const dotT = document.getElementById('dotTrain');
+
+  invite.style.transition = 'opacity .35s ease';
+  invite.style.opacity = '0';
+
   setTimeout(()=>{
     invite.classList.add('hidden');
     stage.classList.add('active');
     plane.classList.add('show');
     dotF.classList.add('on');
     dotT.classList.remove('on');
-  },280);
+  }, 280);
+
+  // Switch from flight window to train window
   setTimeout(()=>{
     plane.classList.remove('show');
     plane.classList.add('hide');
     dotF.classList.remove('on');
     setTimeout(()=>{
-      plane.style.display='none';
+      plane.style.display = 'none';
       train.classList.add('show');
       dotT.classList.add('on');
-    },420);
-  },2400);
+    }, 420);
+  }, 2400);
+
+  // Reveal the surprise
   setTimeout(()=>{
     train.classList.remove('show');
     train.classList.add('hide');
@@ -170,8 +312,8 @@ function openInvite(){
       stage.classList.remove('active');
       surprise.classList.remove('hidden');
       burstConfetti();
-    },500);
-  },4800);
+    }, 500);
+  }, 4800);
 }
 </script>
 </body>
